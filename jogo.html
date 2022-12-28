@@ -264,7 +264,7 @@
 					velocidade = 13 //a velocidade sobe
 				}
 
-				else if (bloco.score >= 40 || bloco.score >= 10 && contador == 3){ // se o score for igual ou maior que 40
+				else if (bloco.score >= 40 && contador < 3){ // se o score for igual ou maior que 40
 					velocidade = 0
 					estadoAtual = estados.perdeu
 					fundo.velocidade = 0;
@@ -278,7 +278,7 @@
 					obstaculos.x = LARGURA;
 					obstaculos.y = ALTURA;
 
-					if (contador == 4){ // se contador for igual a 4
+					if ( bloco.score >= 10 && contador == 3){ // se contador for igual a 4
 						window.location.href = "jogoFase2.html" // direciona para outro link (outra fase)
 						//window.location.href = "https://dicasdejavascript.com.br/como-redirecionar-a-pagina-com-javascript/"
 					}

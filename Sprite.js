@@ -42,10 +42,10 @@ sprArvorinhas = new Sprite(1281, 177, 2433, 387);
 sprQuadra = new Sprite(723, 72, 1233, 309);
 sprArbutoPer = new Sprite(1457, 575, 1995, 672);
 sprBancosPer = new Sprite(1719, 597, 1983, 711);
-lixeiraVer = new Sprite(484, 863, 577, 962);
-lixeiraAzul = new Sprite(337, 1154, 438, 1262);
-lixeiraVerme = new Sprite(108, 1529, 214, 1639);
-lixeiraAma = new Sprite(58, 862, 146, 961);
+lixeiraVer = new Sprite(484, 853, 93, 111);
+lixeiraAzul = new Sprite(170, 864, 97, 105);
+lixeiraVerme = new Sprite(326, 858, 91, 111);
+lixeiraAma = new Sprite(44, 852, 105, 109);
 
 sprBancos2 = new Sprite(2877, 309, 3789, 417);
 sprQuadra2 = new Sprite(3156, 63, 3561, 243);

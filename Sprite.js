@@ -15,9 +15,9 @@ spriteBonecoPula = new Sprite(242, 712, 35, 39),
 spriteBonecoCorre = new Sprite(175, 708, 38, 44),
 spriteBonecoHit = new Sprite(53, 711, 38, 43),
 
-perdeu = new Sprite(2530, 1392, 3135, 1909),
-jogar = new Sprite(299, 683, 131, 67),
-jogar2 = new Sprite(),
+perdeu = new Sprite(4367, 1176, 373, 369),
+jogar = new Sprite(3320, 1176, 373, 367),
+jogar2 = new Sprite(3900, 1184, 373, 367),
 fim = new Sprite(1713, 1383, 2288, 1880),
 obstaculo1 = new Sprite(774, 558, 89, 69),
 obstaculo2 = new Sprite(886, 495, 101, 136),
@@ -42,10 +42,11 @@ sprArvorinhas = new Sprite(1281, 177, 2433, 387);
 sprQuadra = new Sprite(723, 72, 1233, 309);
 sprArbutoPer = new Sprite(1457, 575, 1995, 672);
 sprBancosPer = new Sprite(1719, 597, 1983, 711);
-lixeiraVer = new Sprite(484, 853, 93, 111);
-lixeiraAzul = new Sprite(170, 864, 97, 105);
-lixeiraVerme = new Sprite(326, 858, 91, 111);
-lixeiraAma = new Sprite(44, 852, 105, 109);
+lixeiraVer = new Sprite(202, 861, 93, 111);
+lixeiraAzul = new Sprite(293, 861, 97, 105);
+lixeiraVerme = new Sprite(17, 861, 91, 111);
+lixeiraAma = new Sprite(111, 861, 91, 109);
+lixeiras = new Sprite(989, 1709, 234, 70);
 
 sprBancos2 = new Sprite(2877, 309, 3789, 417);
 sprQuadra2 = new Sprite(3156, 63, 3561, 243);
@@ -57,6 +58,10 @@ moca2 = new Sprite(125,1845,103,91);
 moca3 = new Sprite(349,1845,103,91);
 policial = new Sprite(458,1845,103,91);
 homem = new Sprite(237,1845,103,91);
-cao = new Sprite(1252,1845,103,91);
+cao = new Sprite(470,840,115,118);
+caoCara = new Sprite(473, 846, 62, 55);
+
+cora = new Sprite(23, 1071, 64, 57);
+coraSem = new Sprite(23, 1133, 63, 53);
 
 //var canvas, ctx, x = 50, y = 60, WIDTH = 600, HEIGHT = 600, title1 = new Image(), posicao = 0, num_posicao = 3;

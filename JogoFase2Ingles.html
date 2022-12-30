@@ -303,38 +303,102 @@
 				for (var i = 0, tam = this._obs.length; i < tam; i++){
 					var obs = this._obs[i];
 				
-					if (bloco.score == 5 || bloco.score == 6 || bloco.score == 3 || bloco.score == 8 || bloco.score == 12 || bloco.score == 13){
+					if (bloco.score == 5 || bloco.score == 6 || bloco.score == 3 || bloco.score == 8 || bloco.score == 12 || bloco.score == 13 || bloco.score == 17 || bloco.score == 19 || bloco.score == 21 || bloco.score == 22 || bloco.score == 26 || bloco.score == 30 || bloco.score == 37){
 						obstaculo6.desenha(obs.x, chao.y - obs.altura);
 						reciclavel = true;
 					
 					}
 					else if(contador == 0){
-						if (bloco.score <= 2 || bloco.score == 4 || bloco.score == 7 || bloco.score == 9 || 9 < bloco.score && bloco.score <= 11 || bloco.score > 13) {
+						if (bloco.score <= 2 || bloco.score == 4 || bloco.score == 7 || bloco.score == 9 || bloco.score == 10) {
 						obstaculo1.desenha(obs.x, chao.y - obs.altura);
 						reciclavel = false;
 						lixeiraVerme.desenha(220, 200);
 					}
+						else if(bloco.score <= 11 || bloco.score > 13 && bloco.score < 17 || bloco.score == 18 || bloco.score == 20){
+							obstaculo5.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVerme.desenha(220, 200);
+						}
+						else if(bloco.score > 22 && bloco.score < 26 || bloco.score > 26 && bloco.score < 30){
+							obstaculo6.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVerme.desenha(220, 200);
+						}
+						else if(bloco.score > 30 && bloco.score < 37 || bloco.score > 37){
+							obstaculo7.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVerme.desenha(220, 200);
+						}
 					}
 					else if(contador == 1){
-						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9 || 9 < bloco.score && bloco.score <= 11 || bloco.score > 13) {
+						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9 || bloco.score == 10) {
 						obstaculo2.desenha(obs.x, chao.y - obs.altura);
 						reciclavel = false;
 						lixeiraAma.desenha(220, 200);
 					}
+						else if(bloco.score <= 11 || bloco.score > 13 && bloco.score < 17 || bloco.score == 18 || bloco.score == 20){
+							obstaculo8.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAma.desenha(220, 200);
+						}
+						else if(bloco.score > 22 && bloco.score < 26 || bloco.score > 26 && bloco.score < 30){
+							obstaculo9.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAma.desenha(220, 200);
+						}
+						else if(bloco.score > 30 && bloco.score < 37 || bloco.score > 37){
+							obstaculo10.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAma.desenha(220, 200);
+						}
 					}
 					else if(contador == 2){
-						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9 || 9 < bloco.score && bloco.score <= 11 || bloco.score > 13) {
+						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9) {
 						obstaculo3.desenha(obs.x, chao.y - obs.altura);
 						reciclavel = false;
 						lixeiraVer.desenha(220, 200);
 					}
+						else if(bloco.score <= 11 || bloco.score > 13 && bloco.score < 17 || bloco.score == 20){
+							obstaculo11.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVer.desenha(220, 200);
+						}
+						else if(bloco.score > 22 && bloco.score < 26 || bloco.score > 26 && bloco.score < 29){
+							obstaculo12.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVer.desenha(220, 200);
+						}
+						else if(bloco.score > 30 && bloco.score < 36 || bloco.score > 37){
+							obstaculo13.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraVer.desenha(220, 200);
+						}
+						else if(bloco.score == 10 || bloco.score == 18 || bloco.score == 29 || bloco.score == 36){
+							obstaculo13.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = true;
+						}
 					}
 					else if(contador == 3){
-						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9 || 9 < bloco.score && bloco.score <= 11 || bloco.score > 13) {
+						if (bloco.score <= 2 || bloco.score > 3 && bloco.score < 5 || bloco.score == 7 || bloco.score == 9 || bloco.score == 10) {
 						obstaculo4.desenha(obs.x, chao.y - obs.altura);
 						reciclavel = false;
 						lixeiraAzul.desenha(220, 200);
 					}
+						else if(bloco.score <= 11 || bloco.score > 13 && bloco.score < 17 || bloco.score == 18 || bloco.score == 20){
+							obstaculo14.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAzul.desenha(220, 200);
+						}
+						else if(bloco.score > 22 && bloco.score < 26 || bloco.score > 26 && bloco.score < 30){
+							obstaculo15.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAzul.desenha(220, 200);
+						}
+						else if(bloco.score > 30 && bloco.score < 37 || bloco.score > 37){
+							obstaculo15.desenha(obs.x, chao.y - obs.altura);
+							reciclavel = false;
+							lixeiraAzul.desenha(220, 200);
+						}
 					}
 				
 				}
@@ -449,12 +513,33 @@
 
 
 			ctx.fillStyle = "#fff";
-			ctx.font = "50px Arial";
-			ctx.fillText(bloco.pontos, 30, 68);
+			ctx.font = "40px Arial"
+			ctx.fillText("Score:", 30, 68);
 
-			ctx.fillStyle = "red";
-			ctx.font = "50px Arial";
-			ctx.fillText(bloco.vida, 520, 68);
+			ctx.fillStyle = "#fff";
+			ctx.font = "40px Arial";
+			ctx.fillText(bloco.r, 150, 68);
+
+			if(bloco.vida == 3){
+				cora.desenha(520, 30);
+				cora.desenha(450, 30);
+				cora.desenha(380, 30);
+			}
+			else if(bloco.vida == 2){
+				cora.desenha(520, 30);
+				cora.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
+			else if(bloco.vida == 1){
+				cora.desenha(520, 30);
+				coraSem.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
+			else if(bloco.vida == 0){
+				coraSem.desenha(520, 30);
+				coraSem.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
 
 			obstaculos.desenha();
 			fundo_quadra.desenha();
@@ -467,11 +552,27 @@
 
 			// desenha um "botão" para jogar
 			if(estadoAtual == estados.jogar){
-				jogar.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
+				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
+				ctx.font = "30px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Enter to start!!!", 150, 175);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black"
+				ctx.fillText("Collect the recyclable garbage and", 145, 250);
+				ctx.fillText("divert the non-recyclable.", 145, 275);
 			}
 			//desenha um "botão" para reiniciar o jogo
 			else if (estadoAtual == estados.perdeu) {
-				sprArvore.desenha((xis - 50), ypson - (259));
+				cao.desenha((xis + 20), (ypson - 3));
+				if(contador == 1 && bloco.x <= 200){
+					lixeiraAma.desenha((xis - 81), (ypson + 3))
+				}
+				else if(contador == 2 && bloco.x <= 200){
+					lixeiraVer.desenha((xis - 81), (ypson + 3))
+				}
+				else if(contador == 3 && bloco.x <= 200){
+					lixeiraAzul.desenha((xis - 81), (ypson + 3))
+				}
 
 				if (bloco.x < 200){
 					bloco.x++
@@ -546,7 +647,13 @@
 			}
 
 			else if (estadoAtual == estados.acabou){
-				perdeu.desenha(-10, -10);
+				jogar2.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2); // desenha um botão para reiniciar o jogo
+				ctx.font = "40px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Game Over :(", 175, 200);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black"
+				ctx.fillText("Click enter to play again", 150, 275);
 			}
 
 

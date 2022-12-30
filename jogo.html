@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title> Teste 123 </title>
 	<script src = "Sprite.js"></script>
+	<script src= "tentandop.html"></script>
 	<style>
 		/* canvas é a área onde todos os elementos do jogo serão colocados*/
 		canvas {
@@ -278,13 +279,17 @@
 					obstaculos.x = LARGURA;
 					obstaculos.y = ALTURA;
 
-					if ( contador == 4){ // se contador for igual a 4
-						window.location.href = "jogoFase2.html" // direciona para outro link (outra fase)
-						//window.location.href = "https://dicasdejavascript.com.br/como-redirecionar-a-pagina-com-javascript/"
-					}
+					
 		
 
 				}
+				//else if (contador == 4 && bloco.score == 0){
+				//	contador++
+				//}
+				else if (contador == 4){ // se contador for igual a 4
+						window.location.href = "jogoFase2.html" // direciona para outro link (outra fase)
+						//window.location.href = "https://dicasdejavascript.com.br/como-redirecionar-a-pagina-com-javascript/"
+					}
 			},
 
 			limpa: function(){
@@ -434,15 +439,35 @@
 			bg.desenha(0, 0);
 			bg.desenha(0 + LARGURA, 0);
 
+			ctx.fillStyle = "#fff";
+			ctx.font = "40px Arial"
+			ctx.fillText("Pontos:", 30, 68);
 
 			ctx.fillStyle = "#fff";
-			ctx.font = "50px Arial";
-			ctx.fillText(bloco.r, 30, 68);
+			ctx.font = "40px Arial";
+			ctx.fillText(bloco.r, 180, 68);
 
 			//desenha um contador vermelho para bloco.vida nas posições (520,68) no jogo
-			ctx.fillStyle = "red";
-			ctx.font = "50px Arial";
-			ctx.fillText(bloco.vida, 520, 68);
+			if(bloco.vida == 3){
+				cora.desenha(520, 30);
+				cora.desenha(450, 30);
+				cora.desenha(380, 30);
+			}
+			else if(bloco.vida == 2){
+				cora.desenha(520, 30);
+				cora.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
+			else if(bloco.vida == 1){
+				cora.desenha(520, 30);
+				coraSem.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
+			else if(bloco.vida == 0){
+				coraSem.desenha(520, 30);
+				coraSem.desenha(450, 30);
+				coraSem.desenha(380, 30);
+			}
 
 			obstaculos.desenha();
 			fundo_quadra.desenha();
@@ -454,12 +479,36 @@
 			fundo_arbustoPer.desenha();
 
 			
-			if(estadoAtual == estados.jogar){// desenha um "botão" para jogar
+			if(estadoAtual == estados.jogar && contador == 0 || estadoAtual == estados.jogar && contador == 1 || estadoAtual == estados.jogar && contador == 2 || estadoAtual == estados.jogar && contador == 3){// desenha um "botão" para jogar
 				jogar.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
+				ctx.font = "30px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Enter para começar!!!", 150, 175);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black"
+				ctx.fillText("Desvie do lixo apertando a tecla", 145, 250);
+				ctx.fillText("espaço.", 145, 275);
+			}
+			else if (estadoAtual == estados.jogar && contador == 4){
+				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
+				ctx.font = "30px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Enter para começar!!!", 150, 175);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black"
+				ctx.fillText("Colete o lixo reciclável e desvie do", 145, 250);
+				ctx.fillText("não reciclável.", 145, 275)
 			}
 			
 			else if (estadoAtual == estados.perdeu) {//Se o p jogador passar de fase
-				sprArvore.desenha((xis - 50), ypson - (259));
+				
+				if(contador == 0 || contador == 1 || contador == 2 || contador == 3){
+					sprArvore.desenha((xis - 50), ypson - (259));
+				}
+				if(contador == 4){
+					lixeiraVerme.desenha((xis - 81), (ypson + 3))
+					cao.desenha((xis + 20), (ypson - 3));
+				}
 
 				if (bloco.x < 200){
 					bloco.x++
@@ -479,7 +528,7 @@
 					ctx.fillRect(25, 125, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Cara, que sujeira nessas praças, né?", 25, 150);
+					ctx.fillText("- Que sujeira nessas praças, né?", 25, 150);
 					ctx.fillText("- Sim, esses lixos expostos podem gerar resíduos que fazem", 25, 175);
 					ctx.fillText(" mal a natureza, como o chorume!", 25, 200)
 
@@ -528,9 +577,30 @@
 					
 					
 				}
+				else if (contador == 4 && bloco.x == 200){
+					ctx.fillStyle = "black"
+					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillStyle = "white"
+					ctx.fillRect(25, 125, 550, 150);
+					ctx.font = "20px Arial"
+					ctx.fillStyle = "black";
+					ctx.fillText("- Olá, eu sei que você deve estar se perguntando: por que", 25, 150);
+					ctx.fillText("esse cachorro está falando? Mas a gente pode salvar essa", 25, 175);
+					ctx.fillText("pracinha. Vamos reciclar! Vamos começar pegando o plastico.", 25, 200);
+					ctx.fillText("Podemos reciclar embalagens, sacolas, frascos e garrafas", 25, 225);
+					ctx.fillText("plásticas e colocar na lixeira vermelha.", 25, 250);
+
+					ctx.fillStyle = "black";
+					ctx.fillRect(20, 18, 108, 100);
+					caoCara.desenha(22,20);
+					
+					
+				}
 				//desenha um bloco azul, onde será colocado a arte futuramente
-				ctx.fillStyle = "blue";
-				ctx.fillRect(xis, ypson, 100, 100);
+				if(contador == 0 || contador == 1 || contador == 2 || contador == 3){
+					ctx.fillStyle = "blue";
+					ctx.fillRect(xis, ypson, 100, 100);
+				}	
 			}
 			//desenha os obstáculos quando estiver jogando
 			else if (estadoAtual == estados.jogando){
@@ -550,7 +620,14 @@
 			}
 
 			else if (estadoAtual == estados.acabou){ // se o jogador perder
-				perdeu.desenha(-10, -10); // desenha um botão para reiniciar o jogo
+				jogar2.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2); // desenha um botão para reiniciar o jogo
+				ctx.font = "40px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Game Over :(", 175, 200);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black"
+				ctx.fillText("Clique Enter para jogar novamente", 150, 275);
+
 			}
 
 

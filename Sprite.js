@@ -34,7 +34,7 @@ obstaculo12 = new Sprite(854, 388, 71, 108),
 obstaculo13 = new Sprite(924, 387, 77, 103),
 obstaculo14 = new Sprite(1005, 394, 69, 90),
 obstaculo15 = new Sprite(1080, 400, 83, 90),
-spriteChao = new Sprite(0, 621, 687, 50),
+spriteChao = new Sprite(0, 621, 688, 50),
 bg2 = new Sprite(1205, 422, 1341, 532);
 sprArvore = new Sprite(2142, 741, 2463, 1104);
 sprBancos = new Sprite(1431, 24, 2322, 132);
@@ -52,7 +52,6 @@ sprBancos2 = new Sprite(2888, 315, 860, 81);
 sprQuadra2 = new Sprite(3156, 63, 365, 156);
 sprArbutoPer2 = new Sprite(3624, 832, 567, 141);
 bg3 = new Sprite(2917, 510, 1641, 132);
-heroi = new Sprite(5439, 15, 1089, 352);
 
 moca1 = new Sprite(12,1845,103,91);
 moca2 = new Sprite(125,1845,103,91);

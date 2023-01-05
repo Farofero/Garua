@@ -94,24 +94,6 @@
 				bg3.desenha(this.x, this.y);
 			}
 		}
-		branco{
-			y: 600, // localização no eixo y
-			x: 0, // localização no eixo x
-			altura: 500, // altura do sprite
-			velocidade: 0, // velocidade que fará ao se deslocar
-	
-			// função atualiza o fundo
-			atualiza: function(){
-				this.x -= this.velocidade; // utiliza o x mencionado e desloca o sprite usando a velocidade nesse eixo
-				if (this.x <= -1005) // Se a posição do x for menor ou igual que -500, o x volta para a posição inicial
-					this.x = 0;
-			},
-			//função busca o sprite correto e desenha nas conrdenadas já mencionadas
-			desenha:function(){
-				heroi.desenha(this.x, this.y);// sprite do fundo do jogo
-				heroi.desenha(this.x, this.y);
-			}
-		}
 		 fundo_Arvore = {
 			y: 330, // localização no eixo y
 			x: 0, // localização no eixo x
@@ -447,7 +429,6 @@
 
 			fundo_Arvore.atualiza();
 			fundo.atualiza();
-			branco.atualiza();
 			fundo_bancos.atualiza();
 			fundo_arbustoPer.atualiza();
 			chao.atualiza();
@@ -496,7 +477,6 @@
 			fundo_Arvore.desenha();
 			fundo_bancos.desenha();
 			fundo.desenha();
-			branco.desenha();
 			chao.desenha();
 			bloco.desenha();
 			fundo_arbustoPer.desenha();

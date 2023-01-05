@@ -50,7 +50,7 @@ lixeiras = new Sprite(989, 1709, 234, 70);
 
 sprBancos2 = new Sprite(2888, 315, 860, 81);
 sprQuadra2 = new Sprite(3156, 63, 365, 156);
-sprArbutoPer2 = new Sprite(3624, 759, 520, 130);
+sprArbutoPer2 = new Sprite(3624, 832, 567, 141);
 bg3 = new Sprite(2917, 510, 1641, 132);
 heroi = new Sprite(5439, 15, 1089, 352);
 

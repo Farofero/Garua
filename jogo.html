@@ -16,8 +16,8 @@
 			margin: auto;
 			color:  skyblue;
 				}
-		body{
-					zoom: 1.2;
+				body{
+					zoom: 1.1;
 				}
 
 	</style>
@@ -391,9 +391,10 @@
 			ALTURA = window.innerHeight;
 			LARGURA = window.innerWidth;
 
-				LARGURA = 300;
-				ALTURA = 900;
-			
+			if (LARGURA >= 500){
+				LARGURA = 600;
+				ALTURA = 600;
+			}
 			//propiedades do canvas
 			canvas = document.createElement("canvas");
 			canvas.width = LARGURA;

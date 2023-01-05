@@ -48,9 +48,9 @@ lixeiraVerme = new Sprite(17, 861, 91, 111);
 lixeiraAma = new Sprite(111, 861, 91, 109);
 lixeiras = new Sprite(989, 1709, 234, 70);
 
-sprBancos2 = new Sprite(2877, 309, 3789, 417);
-sprQuadra2 = new Sprite(3156, 63, 3561, 243);
-sprArbutoPer2 = new Sprite(3624, 759, 4179, 888);
+sprBancos2 = new Sprite(2888, 315, 860, 81);
+sprQuadra2 = new Sprite(3156, 63, 365, 156);
+sprArbutoPer2 = new Sprite(3624, 759, 520, 130);
 bg3 = new Sprite(2917, 510, 1641, 132);
 heroi = new Sprite(5439, 15, 1089, 352);
 

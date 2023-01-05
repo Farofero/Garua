@@ -511,34 +511,34 @@
 			bg.desenha(0, 0);
 			bg.desenha(0 + LARGURA, 0);
 
-
 			ctx.fillStyle = "#fff";
 			ctx.font = "40px Arial"
-			ctx.fillText("Score:", 30, 68);
+			ctx.fillText("Pontos:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 53);
 
 			ctx.fillStyle = "#fff";
 			ctx.font = "40px Arial";
-			ctx.fillText(bloco.r, 150, 68);
+			ctx.fillText(bloco.r, LARGURA / 2 - jogar.largura / 2 + 50, ALTURA / 2 - jogar.altura / 2 - 53);
 
+			//desenha um contador vermelho para bloco.vida nas posições (520,68) no jogo
 			if(bloco.vida == 3){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				cora.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 2){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 1){
-				cora.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 0){
-				coraSem.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 
 			obstaculos.desenha();
@@ -555,11 +555,11 @@
 				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
 				ctx.font = "30px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Enter to start!!!", 150, 175);
+				ctx.fillText("Enter to start!!!", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 60);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Collect the recyclable garbage and", 145, 250);
-				ctx.fillText("divert the non-recyclable.", 145, 275);
+				ctx.fillText("Collect the recyclable garbage and", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
+				ctx.fillText("divert the non-recyclable.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150);
 			}
 			//desenha um "botão" para reiniciar o jogo
 			else if (estadoAtual == estados.perdeu) {
@@ -587,14 +587,14 @@
 				if(contador == 1 && bloco.x == 200){ // se o contador for igual a 1
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Great! Let's collect the glass and put it in the Yellow trash.", 25, 150);
-					ctx.fillText(" These can be bottles, glass jars, medicine bottles or", 25, 175);
-					ctx.fillText(" perfume bottles", 25, 200)
+					ctx.fillText("- Great! Let's collect the glass and put it in the Yellow trash.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" These can be bottles, glass jars, medicine bottles or", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" perfume bottles", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
@@ -604,31 +604,31 @@
 				else if (contador == 2 && bloco.x == 200){ // se o contador for igual a 2
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Yes! Let's collect the Metal and put it in the Green Trash.", 25, 150);
-					ctx.fillText(" An example of RECYCLABLE metals are soda cans.", 25, 175);
-					ctx.fillText(" But there are NON-recyclable metals that we cannot", 25, 200);
-					ctx.fillText(" collect, they are: steel sponge, clips, staples,", 25, 225);
-					ctx.fillText(" paint cans and batteries.", 25, 250);
+					ctx.fillText("- Yes! Let's collect the Metal and put it in the Green Trash.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" An example of RECYCLABLE metals are soda cans.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" But there are NON-recyclable metals that we cannot", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText(" collect, they are: steel sponge, clips, staples,", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+					ctx.fillText(" paint cans and batteries.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
 				}
 				else if (contador == 3 && bloco.x == 200){
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Congratulations! Now let's take the Paper and put", 25, 150);
-					ctx.fillText(" it in the blue trash.", 25, 175);
-					ctx.fillText(" We can recycle this: Books, cardboard, magazine, notebook", 25, 200);
-					ctx.fillText(" newspaper or cardboard.", 25, 225);
+					ctx.fillText("- Congratulations! Now let's take the Paper and put", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" it in the blue trash.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" We can recycle this: Books, cardboard, magazine, notebook", LARGURA / 2 - jogar.largura / 2 - 80, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText(" newspaper or cardboard.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
@@ -650,10 +650,10 @@
 				jogar2.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2); // desenha um botão para reiniciar o jogo
 				ctx.font = "40px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Game Over :(", 175, 200);
+				ctx.fillText("Game Over :(", LARGURA / 2 - jogar.largura / 2 + 70, ALTURA / 2 - jogar.altura / 2 + 100);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Click enter to play again", 150, 275);
+				ctx.fillText("Click enter to play again", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 175);
 			}
 
 

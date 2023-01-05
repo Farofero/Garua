@@ -511,35 +511,35 @@
 			bg.desenha(0, 0);
 			bg.desenha(0 + LARGURA, 0);
 
+			ctx.fillStyle = "#fff";
+			ctx.font = "40px Arial"
+			ctx.fillText("Pontos:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 53);
 
 			ctx.fillStyle = "#fff";
-			ctx.font = "50px Arial";
-			ctx.fillText(bloco.pontos, 30, 68);
+			ctx.font = "40px Arial";
+			ctx.fillText(bloco.r, LARGURA / 2 - jogar.largura / 2 + 50, ALTURA / 2 - jogar.altura / 2 - 53);
 
+			//desenha um contador vermelho para bloco.vida nas posições (520,68) no jogo
 			if(bloco.vida == 3){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				cora.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 2){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 1){
-				cora.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 0){
-				coraSem.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
-
-			//ctx.fillStyle = "red";
-			//ctx.font = "50px Arial";
-			//ctx.fillText(bloco.vida, 520, 68);
 
 			obstaculos.desenha();
 			fundo_quadra.desenha();
@@ -555,11 +555,11 @@
 				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
 				ctx.font = "30px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Enter para começar!!!", 150, 175);
+				ctx.fillText("Enter para começar!!!", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 60);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Colete o lixo reciclável e desvie do", 145, 250);
-				ctx.fillText("não reciclável.", 145, 275);
+				ctx.fillText("Colete o lixo reciclável e desvie do", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
+				ctx.fillText("não reciclável.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150);
 			}
 			//desenha um "botão" para reiniciar o jogo
 			else if (estadoAtual == estados.perdeu) {
@@ -587,14 +587,14 @@
 				if(contador == 1 && bloco.x == 200){ // se o contador for igual a 1
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black"; 
-					ctx.fillText("- Isso! Vamos coletar o vidro e colocar na lixeira Amarela.", 25, 150);
-					ctx.fillText(" Podem ser garrafas, potes de vidro, frascos de remédio ou", 25, 175);
-					ctx.fillText(" frascos de perfume", 25, 200)
+					ctx.fillText("- Isso! Vamos coletar o vidro e colocar na lixeira Amarela.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" Podem ser garrafas, potes de vidro, frascos de remédio ou", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" frascos de perfume", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
@@ -604,31 +604,31 @@
 				else if (contador == 2 && bloco.x == 200){ // se o contador for igual a 2
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Boa! Agora vamos coletar o Metal e colocar na lixeira Verde.", 25, 150);
-					ctx.fillText(" Um exemplo de metais RECICLÁVEIS são as latas de refri.", 25, 175);
-					ctx.fillText(" Mas existem os metais NÃO recicláveis e que não podemos", 25, 200);
-					ctx.fillText(" coletar, são eles: esponja de aço, clipes, grampos,", 25, 225);
-					ctx.fillText(" latas de tinta e nem pilhas.", 25, 250);
+					ctx.fillText("- Boa! Agora vamos coletar o Metal e colocar na lixeira Verde.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" Um exemplo de metais RECICLÁVEIS são as latas de refri.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" Mas existem os metais NÃO recicláveis e que não podemos", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText(" coletar, são eles: esponja de aço, clipes, grampos,", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+					ctx.fillText(" latas de tinta e nem pilhas.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
 				}
 				else if (contador == 3 && bloco.x == 200){
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Parabéns! Agora vamos pegar o Papel e colocar na li-", 25, 150);
-					ctx.fillText(" xeira Azul.", 25, 175);
-					ctx.fillText(" Podemos reciclar isso: Livros, papelão, revista, caderno", 25, 200);
-					ctx.fillText(" jornal ou cartolina.", 25, 225);
+					ctx.fillText("- Parabéns! Agora vamos pegar o Papel e colocar na li-", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" xeira Azul.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" Podemos reciclar isso: Livros, papelão, revista, caderno", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText(" jornal ou cartolina.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
 
 					ctx.fillStyle = "red";
 					ctx.fillRect(20, 20, 100, 100);
@@ -651,10 +651,10 @@
 				jogar2.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2); // desenha um botão para reiniciar o jogo
 				ctx.font = "40px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Game Over :(", 175, 200);
+				ctx.fillText("Game Over :(", LARGURA / 2 - jogar.largura / 2 + 70, ALTURA / 2 - jogar.altura / 2 + 100);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Clique Enter para jogar novamente", 150, 275);
+				ctx.fillText("Clique Enter para jogar novamente", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 175);
 			}
 
 

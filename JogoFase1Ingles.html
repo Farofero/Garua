@@ -435,35 +435,34 @@
 			bg.desenha(0, 0);
 			bg.desenha(0 + LARGURA, 0);
 
-
 			ctx.fillStyle = "#fff";
 			ctx.font = "40px Arial"
-			ctx.fillText("Score:", 30, 68);
+			ctx.fillText("Pontos:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 53);
 
 			ctx.fillStyle = "#fff";
 			ctx.font = "40px Arial";
-			ctx.fillText(bloco.r, 150, 68);;
+			ctx.fillText(bloco.r, LARGURA / 2 - jogar.largura / 2 + 50, ALTURA / 2 - jogar.altura / 2 - 53);
 
 			//desenha um contador vermelho para bloco.vida nas posições (520,68) no jogo
 			if(bloco.vida == 3){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				cora.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 2){
-				cora.desenha(520, 30);
-				cora.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 1){
-				cora.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				cora.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 			else if(bloco.vida == 0){
-				coraSem.desenha(520, 30);
-				coraSem.desenha(450, 30);
-				coraSem.desenha(380, 30);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 400, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 333, ALTURA / 2 - jogar.altura / 2 - 85);
+				coraSem.desenha(LARGURA / 2 - jogar.largura / 2 + 266, ALTURA / 2 - jogar.altura / 2 - 85);
 			}
 
 			obstaculos.desenha();
@@ -480,21 +479,21 @@
 				jogar.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
 				ctx.font = "30px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Enter to start!!!", 150, 175);
+				ctx.fillText("Enter to start!!!", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 60);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Dodge the garbage by pressing the", 145, 250);
-				ctx.fillText("space key.", 145, 275);
+				ctx.fillText("Dodge the garbage by pressing the", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
+				ctx.fillText("space key.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150);
 			}
 			else if(estadoAtual == estados.jogar && contador == 4){
 				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
 				ctx.font = "30px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Enter to start!!!", 150, 175);
+				ctx.fillText("Enter to start!!!", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 60);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Collect the recyclable garbage and", 145, 250);
-				ctx.fillText("divert thenon-recyclable.", 145, 275);
+				ctx.fillText("Collect the recyclable garbage and", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
+				ctx.fillText("divert thenon-recyclable.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150);
 			}
 			
 			else if (estadoAtual == estados.perdeu) {//Se o p jogador passar de fase
@@ -524,9 +523,9 @@
 					ctx.fillRect(25, 125, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- What a mess in these squares, right?", 25, 150);
-					ctx.fillText("- Yes, this exposed waste can generate waste that is", 25, 175);
-					ctx.fillText(" harmful to nature, such as manure!", 25, 200)
+					ctx.fillText("- What a mess in these squares, right?", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText("- Yes, this exposed waste can generate waste that is", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" harmful to nature, such as manure!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
 
 					ctx.fillStyle = "black";
 					ctx.fillRect(20, 18, 207, 100);
@@ -537,16 +536,16 @@
 				else if (contador == 2 && bloco.x == 200){ // se o contador for igual a 2
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- The square is very dirty, with weeds taking over everything!", 25, 150);
-					ctx.fillText("And the children's playgrounds are in deplorable condition", 25, 175);
-					ctx.fillText("- Also, when the night comes, some posts are", 25, 200);
-					ctx.fillText(" without lighting and I don't know about you, but I get scared", 25, 225);
-					ctx.fillText(" to walk around here at night.", 25, 250);
+					ctx.fillText("- The square is very dirty, with weeds taking over everything!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText("And the children's playgrounds are in deplorable condition", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText("- Also, when the night comes, some posts are", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText(" without lighting and I don't know about you, but I get scared", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+					ctx.fillText(" to walk around here at night.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
 					ctx.fillStyle = "black";
 					ctx.fillRect(20, 18, 207, 100);
@@ -555,13 +554,13 @@
 				}
 				else if (contador == 3 && bloco.x == 200){
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Wow, here is full of papers, plastics, cans and", 25, 150);
-					ctx.fillText(" a lot of glass bottles...", 25, 175);
+					ctx.fillText("- Wow, here is full of papers, plastics, cans and", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" a lot of glass bottles...", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
 
 					ctx.fillStyle = "black";
 					ctx.fillRect(20, 18, 108, 100);
@@ -571,16 +570,16 @@
 				}
 				else if (contador == 4 && bloco.x == 200){
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Hello, I know you must be wondering: why is this dog", 25, 150);
-					ctx.fillText("talking? But we can save this square. Let's recycle!", 25, 175);
-					ctx.fillText("Let's start by getting the plastic. We can recycle", 25, 200);
-					ctx.fillText("packaging, bags, jars and plastic bottles and put them", 25, 225);
-					ctx.fillText("in the red bin.", 25, 250);
+					ctx.fillText("- Hello, I know you must be wondering: why is this dog", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText("talking? But we can save this square. Let's recycle!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText("Let's start by getting the plastic. We can recycle", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+					ctx.fillText("packaging, bags, jars and plastic bottles and put them", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+					ctx.fillText("in the red bin.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
 					ctx.fillStyle = "black";
 					ctx.fillRect(20, 18, 108, 100);
@@ -602,12 +601,12 @@
 				if (contador == 3 && bloco.score >= 5){ // se o contador for igual a 3 e o score for igual ou maior que 5
 					//desenha um diálogo
 					ctx.fillStyle = "black"
-					ctx.fillRect(20, 120, 560, 160);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
 					ctx.fillStyle = "white"
-					ctx.fillRect(25, 125, 550, 150);
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- I can help with cleaning by separating recyclable garbage!", 25, 150);
+					ctx.fillText("- I can help with cleaning by separating recyclable garbage!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
 				}
 			}
 
@@ -615,10 +614,10 @@
 				jogar2.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2); // desenha um botão para reiniciar o jogo
 				ctx.font = "40px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Game Over :(", 175, 200);
+				ctx.fillText("Game Over :(", LARGURA / 2 - jogar.largura / 2 + 70, ALTURA / 2 - jogar.altura / 2 + 100);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black"
-				ctx.fillText("Click enter to play again", 150, 275);
+				ctx.fillText("Click enter to play again", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 175);
 			}
 
 

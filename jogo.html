@@ -382,9 +382,9 @@
 			}
 
 			function clique2(event){
-				 if (estadoAtual == estados.jogando){  // quando estiver jogando, ao clicar, o personagem pula
-					bloco.pula();
-			}
+				// if (estadoAtual == estados.jogando){  // quando estiver jogando, ao clicar, o personagem pula
+				//	bloco.pula();
+			//}
 				else if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
 						estadoAtual = estados.jogando;
 					}
@@ -679,8 +679,15 @@
 
 
 		}	
+
+		function ava(){
+			if (estadoAtual == estados.jogando){  // quando estiver jogando, ao clicar, o personagem pula
+					bloco.pula();
+			
+		}
 		//inicializa o jogo
 		main();
 	</script>
+	<button id="pulei" onclick="ava()">Paralelepipedo</button>
 </body>
 </html>

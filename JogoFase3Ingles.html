@@ -371,6 +371,47 @@
 			}
 
 			}
+
+			function clique2(event){
+				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+					else if (contador == 1) {
+						window.location.href = "index.html"
+					}
+					else if (estadoAtual == estados.jogando){
+						bloco.score++
+					 }
+					else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+					}
+			}
 		//função que monta o corpo do jogo (onde vão ficar as coisas)
 		function main() {
 			//tamanho do canvas
@@ -390,6 +431,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
+			document.addEventListener("mousedown", clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();
@@ -451,7 +493,7 @@
 			//desenha um "botão" para reiniciar o jogo
 			else if (estadoAtual == estados.perdeu) {
 
-				//perdeu.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+				fimIn.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
 			}
 			//desenha os obstáculos quando estiver jogando
 			else if (estadoAtual == estados.jogando){
@@ -493,7 +535,7 @@
 						ctx.fillStyle = "black";
 						ctx.fillText("- Now that we've improved this plaza, lots of fun activities", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
 						ctx.fillText(" are popping up for the community! Like the group", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
-						ctx.fillText(" Tempo de planta, which is making a crowd to plant trees.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+						ctx.fillText(" Tempo de plantar, which is making a crowd to plant trees.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
 						ctx.fillText("  A great environmental education for all ages", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
 						ctx.fillText(" and I have already planted Aroeira Santa and Ipê Branco.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
@@ -519,7 +561,7 @@
 			}
 
 			else if (estadoAtual == estados.acabou){
-				perdeu.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+				fimIn.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
 			}
 
 

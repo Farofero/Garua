@@ -379,6 +379,42 @@
 			}
 
 			}
+
+			function clique2(event){
+				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+				else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+					}
+			}
 		//função que monta o corpo do jogo (onde vão ficar as coisas)
 		function main() {
 			//tamanho do canvas
@@ -398,6 +434,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
+			document.addEventListener("mousedown", clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();

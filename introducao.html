@@ -14,7 +14,7 @@
     <body>
         <h1 align="center">História</h1>
         <p id = "text"></p>
-        <p><b> Clique no Enter para jogar!</b></p>
+        <p><b> Clique no Enter para jogar!</b>  <button onclick="ok()">Enter</button></p>
         <p>ESPAÇO = PULAR; <br> ENTER = CONFIRMAR <br><br> Desvie do LIXO!!</p>
         <script type="text/javascript">
             var el = document.querySelector("#text");
@@ -49,6 +49,10 @@ function clique(event) {
             }
         }
 document.addEventListener("keydown", clique);
+
+function ok(){
+    window.location.href = "jogo.html"
+}
         </script>
     </body>
     </html>

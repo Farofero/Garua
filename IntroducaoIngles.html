@@ -12,10 +12,10 @@
         </style>
     </head>
     <body>
-        <h1 align="center">História</h1>
+        <h1 align="center">Story</h1>
         <p id = "text"></p>
-        <p><b> Clique no Enter para jogar!</b></p>
-        <p>ESPAÇO = PULAR; <br> ENTER = CONFIRMAR <br><br> Desvie do LIXO!!</p>
+        <p><b> Click Enter to play!</b>  <button onclick="ok()">Enter</button></p>
+        <p>SPACE = JUMP; <br> ENTER = CONFIRM <br><br> Dodge the TRASH!!</p>
         <script type="text/javascript">
             var el = document.querySelector("#text");
 var text = "José is a marathon runner and runs in a small square near his home in Guará! However, he will find several gooey and dirty challenges on his way... Will he be able to overcome these challenges and help his square?"
@@ -49,6 +49,10 @@ function clique(event) {
             }
         }
 document.addEventListener("keydown", clique);
+
+function ok(){
+    window.location.href = "JogoFase1Ingles.html"
+}
         </script>
     </body>
     </html>

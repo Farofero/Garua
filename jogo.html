@@ -16,7 +16,6 @@
 			margin: auto;
 			color:  skyblue;
 				}
-
 	</style>
 </head>
 <body>
@@ -24,7 +23,7 @@
 		//variaveis do jogo
 		var canvas, ctx, ALTURA, LARGURA, maxPulos = 1, velocidade = 10, estadoAtual, img, contador = 0, xis = 600, ypson = 450// velocidade = velocidade principal, ALTURA e LARGURA = tamanho do canvas, maxPulos = quantidade de pulos que o personagens poe fazer
 
-		// Sprites que se movimentam atras do perrsonagem]
+		// Sprites que se movimentam atras do perrsonagem
 		fundo_arbustoPer = {
 			y: 461, // localização no eixo y
 			x: 600, // localização no eixo x
@@ -380,8 +379,44 @@
 			break;
 				}
 			}
-
 			}
+
+			function clique2(event){
+				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+				else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+					}
+			}
+
 		//função que monta o corpo do jogo (onde vão ficar as coisas)
 		function main() {
 			//tamanho do canvas
@@ -401,6 +436,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
+			document.addEventListener("mousedown",clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();
@@ -488,6 +524,7 @@
 				ctx.fillStyle = "black"
 				ctx.fillText("Desvie do lixo apertando a tecla", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
 				ctx.fillText("espaço.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150);
+
 			}
 			else if (estadoAtual == estados.jogar && contador == 4){
 				perdeu.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
@@ -498,6 +535,8 @@
 				ctx.fillStyle = "black"
 				ctx.fillText("Colete o lixo reciclável e desvie do", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 130);
 				ctx.fillText("não reciclável.", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 150)
+
+			
 			}
 			
 			else if (estadoAtual == estados.perdeu) {//Se o p jogador passar de fase
@@ -536,6 +575,8 @@
 					ctx.fillRect(20, 18, 207, 100);
 					homem.desenha(22,20);
 					moca3.desenha(123,20);
+
+			
 					
 					//obstaculo14.desenha(400, 445, 100, 100), desenha um bloco azul, onde será colocado a arte futuramente
 					
@@ -559,6 +600,7 @@
 					policial.desenha(21,20);
 					moca2.desenha(123,20);
 					
+				
 
 				}
 				else if (contador == 3 && bloco.x == 200){
@@ -575,7 +617,7 @@
 					ctx.fillRect(20, 18, 108, 100);
 					moca1.desenha(22,20);
 					
-					
+				
 				}
 				else if (contador == 4 && bloco.x == 200){
 					ctx.fillStyle = "black"
@@ -594,7 +636,7 @@
 					ctx.fillRect(20, 18, 108, 100);
 					caoCara.desenha(22,20);
 					
-					
+		
 				}
 				//desenha um bloco azul, onde será colocado a arte futuramente
 				if(contador == 0 || contador == 1 || contador == 2 || contador == 3){
@@ -628,12 +670,12 @@
 				ctx.fillStyle = "black"
 				ctx.fillText("Clique Enter para jogar novamente", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 175);
 
+
 			}
 
 
 
-		}
-
+		}	
 		//inicializa o jogo
 		main();
 	</script>

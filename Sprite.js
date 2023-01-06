@@ -64,4 +64,7 @@ caoCara = new Sprite(473, 846, 62, 55);
 cora = new Sprite(23, 1071, 64, 57);
 coraSem = new Sprite(23, 1133, 63, 53);
 
+enter = new Sprite(15, 1375, 141, 59);
+fimIn = new Sprite(2542, 1398, 587, 487);
+
 //var canvas, ctx, x = 50, y = 60, WIDTH = 600, HEIGHT = 600, title1 = new Image(), posicao = 0, num_posicao = 3;

@@ -26,7 +26,7 @@
 
 		// Sprites que se movimentam atras do personagem
 		fundo_arbustoPer = {
-			y: 398, // localização no eixo y
+			y: 461, // localização no eixo y
 			x: 600, // localização no eixo x
 			altura: 116, // altura do sprite
 			velocidade: 7, // velocidade que fará ao se deslocar
@@ -218,13 +218,13 @@
 						//bloco.score = bloco.score + 10 + Math.floor(50 * Math.random())
 						bloco.score++
 
-						bloco.pontos = bloco.pontos + 75
+						bloco.r = bloco.r + 75
 					}
 					else if (bloco.x < obs.x + obs.largura && bloco.x + bloco.largura >= obs.x && bloco.y + bloco.altura >= chao.y - obs.altura && reciclavel == true){
 						bloco.dano()
-						bloco.score--
+						//bloco.score--
 
-						bloco.pontos = bloco.pontos - 75
+						//bloco.r = bloco.r - 75
 
 					}
 					else if (obs.x > 0 && bloco.cor == "orange" && bloco.vida == 3){
@@ -454,6 +454,42 @@
 			}
 
 			}
+
+			function clique2(event){
+				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+				else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						fundo_arbustoPer.velocidade = 7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+					}
+			}
 		//função que monta o corpo do jogo (onde vão ficar as coisas)
 		function main() {
 			//tamanho do canvas
@@ -473,6 +509,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
+			document.addEventListener("mousedown", clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();
@@ -637,8 +674,8 @@
 					
 				}
 				//desenha um bloco azul, onde será colocado a arte futuramente
-				ctx.fillStyle = "blue";
-				ctx.fillRect(xis, ypson, 100, 100);
+				//ctx.fillStyle = "blue";
+				//ctx.fillRect(xis, ypson, 100, 100);
 				
 			}
 			//desenha os obstáculos quando estiver jogando

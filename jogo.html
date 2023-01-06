@@ -362,7 +362,7 @@
 						bloco.r = 0;
 	
 					}
-					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+					else if (estadoAtual == estados.perdeu && bloco.x == 200){// / quando perder, o clique reinicia o jogo
 						estadoAtual = estados.jogar;
 						obstaculos.limpa();
 						bloco.y = 550;
@@ -382,7 +382,10 @@
 			}
 
 			function clique2(event){
-				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+				 if (estadoAtual == estados.jogando){  // quando estiver jogando, ao clicar, o personagem pula
+					bloco.pula();
+			}
+				else if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
 						estadoAtual = estados.jogando;
 					}
 				else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
@@ -401,7 +404,7 @@
 						bloco.r = 0;
 	
 					}
-					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+					else if (estadoAtual == estados.perdeu && bloco.x == 200){// / quando perder, o clique reinicia o jogo
 						estadoAtual = estados.jogar;
 						obstaculos.limpa();
 						bloco.y = 550;

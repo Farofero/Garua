@@ -16,27 +16,6 @@
 			margin: auto;
 			color:  skyblue;
 				}
-				button#pulei{
-					 position: absolute; /* diz a posição do div*/
-                top: 625px; /* 768px é o 100% do tamanho da janela*/
-                left: 720px; /* 1720px é o 100% do tamanho da janela*/
-                right: 0px;
-                color: white; /* cor da letra */
-                background: red; /* cor do fundo */
-                width: 230px; /* largura do div */
-                height: 100px; /* altura do div*/
-            }
-			button#ok{
-					 position: absolute; /* diz a posição do div*/
-                top: 625px; /* 768px é o 100% do tamanho da janela*/
-                left: 350px; /* 1720px é o 100% do tamanho da janela*/
-                right: 0px;
-                color: white; /* cor da letra */
-                background: blue; /* cor do fundo */
-                width: 230px; /* largura do div */
-                height: 100px; /* altura do div*/
-            }
-
 	</style>
 </head>
 <body>
@@ -219,7 +198,7 @@
 				cor: this.cores[Math.floor(5 * Math.random())]
 				});
 
-				this.tempoInsere = 30 + Math.floor(40 * Math.random()); // a variável tempoInsere será aleatória para ter uma diferença de distância entre obstáculos (30 + número aleatório de 0 a 40)
+				this.tempoInsere = 70; // a variável tempoInsere será aleatória para ter uma diferença de distância entre obstáculos (30 + número aleatório de 0 a 40)
 			},
 			//função que vai atualizar a cada reset
 			atualiza: function(){
@@ -402,8 +381,11 @@
 			}
 			}
 
-			function ovo(){
-				 if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+			function clique2(event){
+				 if (estadoAtual == estados.jogando){  // quando estiver jogando, ao clicar, o personagem pula
+					bloco.pula();
+			}
+				else if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
 						estadoAtual = estados.jogando;
 					}
 				else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
@@ -457,7 +439,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
-			//document.addEventListener("mousedown",clique2);
+			document.addEventListener("mousedown",clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();
@@ -706,7 +688,5 @@
 		//inicializa o jogo
 		main();
 	</script>
-	<button id="pulei" onclick="ava()">Pular</button>
-	<button id="ok" onclick="ovo()">Enter</button>
 </body>
 </html>

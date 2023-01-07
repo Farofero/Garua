@@ -16,17 +16,27 @@
 			margin: auto;
 			color:  skyblue;
 				}
-				button#ok{
+				button#pulei{
 					 position: absolute; /* diz a posição do div*/
-                top: 675px; /* 768px é o 100% do tamanho da janela*/
-                left: 550px; /* 1720px é o 100% do tamanho da janela*/
+                top: 625px; /* 768px é o 100% do tamanho da janela*/
+                left: 720px; /* 1720px é o 100% do tamanho da janela*/
                 right: 0px;
                 color: white; /* cor da letra */
                 background: red; /* cor do fundo */
                 width: 230px; /* largura do div */
                 height: 100px; /* altura do div*/
             }
-				}
+			button#ok{
+					 position: absolute; /* diz a posição do div*/
+                top: 625px; /* 768px é o 100% do tamanho da janela*/
+                left: 350px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                color: white; /* cor da letra */
+                background: blue; /* cor do fundo */
+                width: 230px; /* largura do div */
+                height: 100px; /* altura do div*/
+            }
+
 	</style>
 </head>
 <body>
@@ -392,7 +402,7 @@
 			}
 			}
 
-			function clique2(event){
+			function ovo(){
 				 if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
 						estadoAtual = estados.jogando;
 					}
@@ -447,7 +457,7 @@
 			ctx = canvas.getContext("2d");
 			document.body.appendChild(canvas);
 			document.addEventListener("keydown", clique);
-			document.addEventListener("mousedown",clique2);
+			//document.addEventListener("mousedown",clique2);
 			estadoAtual = estados.jogar;
 
 			img = new Image();
@@ -696,6 +706,7 @@
 		//inicializa o jogo
 		main();
 	</script>
-	<button id="ok" onclick="ava()">Parelelepipedo</button>
+	<button id="pulei" onclick="ava()">Pular</button>
+	<button id="ok" onclick="ovo()">Enter</button>
 </body>
 </html>

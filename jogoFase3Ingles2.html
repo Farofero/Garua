@@ -19,7 +19,7 @@
 				img#prota{
 				position: absolute; /* diz a posição do div*/
                 top: 450px; /* 768px é o 100% do tamanho da janela*/
-                left: 425px; /* 1720px é o 100% do tamanho da janela*/
+                left: 150px; /* 1720px é o 100% do tamanho da janela*/
                 right: 0px;
                 opacity: 1;
 				}
@@ -34,7 +34,7 @@
 				a#credito2{
 					position: absolute; /* diz a posição do div*/
                 top: 175px; /* 768px é o 100% do tamanho da janela*/
-                left: 600px; /* 1720px é o 100% do tamanho da janela*/
+                left: 500px; /* 1720px é o 100% do tamanho da janela*/
                 right: 0px;
                 opacity: 0;
 				}
@@ -296,27 +296,26 @@
 						intro.desenha(LARGURA / 2 - perdeu.largura / 2 - 130, ALTURA / 2 - perdeu.altura / 2 - 125);
 						ctx.font = "40px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("Créditos", LARGURA / 2 - jogar.largura / 2 + 130, ALTURA / 2 - jogar.altura / 2 - 60);
+						ctx.fillText("Credits", LARGURA / 2 - jogar.largura / 2 + 130, ALTURA / 2 - jogar.altura / 2 - 60);
 						ctx.font = "30px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("Desenvolvedores:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 10);
+						ctx.fillText("Developers:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 10);
 						ctx.font = "20px Arial"
 						ctx.fillStyle = "black";
 						ctx.fillText("Arthur Cavalcante, Arthur Saboia, Eros Kauan, Gabriel da Silva,", LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 15); 
 						ctx.fillText("Gilberto De Almeida, Victhor Gabriel, Wagner Oliveira.", LARGURA / 2 - jogar.largura / 2 -90, ALTURA / 2 - jogar.altura / 2 + 40);
-						 ctx.fillText("Instagram da equipe:", LARGURA / 2 - jogar.largura / 2 -90, ALTURA / 2 - jogar.altura / 2 + 75);
+						 ctx.fillText("Instagram:", LARGURA / 2 - jogar.largura / 2 -90, ALTURA / 2 - jogar.altura / 2 + 75);
 						 //document.getElementById("credito1").href = "https://www.freepik.com"
 
 						ctx.font = "25px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("Crédito especial ao autor das seguintes artes:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 + 115);
+						ctx.fillText("Especial thanks to the author of that arts:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 + 115);
 
 						document.getElementById("credito1").style.opacity = 1
 						document.getElementById("credito2").style.opacity = 1
 
 						dialogo1.desenha(200, 275);
-						dialogo2.desenha(300, 275)
-
+						dialogo2.desenha(300, 275);
 
 						estadoAtual = estados.jogar;
 						obstaculos.limpa();
@@ -430,6 +429,7 @@
 			}
 
 			}
+
 			function clique2(event){
 				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
 						estadoAtual = estados.jogando;
@@ -548,15 +548,16 @@
 
 			// desenha um "botão" para jogar
 			if(estadoAtual == estados.jogar){
-				fim.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+			fimIn.desenha(LARGURA / 2 - perdeu.largura / 2 - 100, ALTURA / 2 - perdeu.altura / 2 - 100);
 				ctx.font = "20px Arial"
 				ctx.fillStyle = "black";
-				ctx.fillText("Enter para começar", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 340);
+				ctx.fillText("Enter to start", LARGURA / 2 - jogar.largura / 2 + 20, ALTURA / 2 - jogar.altura / 2 + 280);
+					
 			}
 			//desenha um "botão" para reiniciar o jogo
 			else if (estadoAtual == estados.perdeu) {
 
-				//perdeu.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+				//fimIn.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
 			}
 			//desenha os obstáculos quando estiver jogando
 			else if (estadoAtual == estados.jogando){
@@ -568,9 +569,9 @@
 					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 					ctx.font = "20px Arial"
 					ctx.fillStyle = "black";
-					ctx.fillText("- Conseguirmos diminuir bastante a sujeira e a administração", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
-					ctx.fillText(" acionou o governo, que consertou os postes e a paisagem", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
-					ctx.fillText(" da praça!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
+					ctx.fillText("- We managed to reduce the dirt a lot and the administration", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" called the government, which fixed the posts and the", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" landscape of the square!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
 
 					
 					}
@@ -581,9 +582,9 @@
 						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 						ctx.font = "20px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("- Além disso, agora ela é uma boa opção para quem", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
-						ctx.fillText(" quer fazer uma caminhada mais agradável, sozinho ou com", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
-						ctx.fillText(" a família.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+						ctx.fillText("- In addition, now it is a good option for those", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+						ctx.fillText(" who want to take a more pleasant walk, alone", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+						ctx.fillText(" or with the family.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
 
 						
 					}
@@ -594,11 +595,11 @@
 						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 						ctx.font = "20px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("- Agora que melhoramos essa praça, muitas atividades diver-", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
-						ctx.fillText(" tidas estão aparecendo para a comunidade! Como o grupo", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
-						ctx.fillText(" Tempo de plantar, que está fazendo um multirão para plantar", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
-						ctx.fillText(" árvores. Uma ótima educação ambiental para todas as", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
-						ctx.fillText(" idades e já plantei Aroeira Santa e Ipê Branco.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
+						ctx.fillText("- Now that we've improved this plaza, lots of fun activities", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+						ctx.fillText(" are popping up for the community! Like the group", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+						ctx.fillText(" Tempo de plantar, which is making a crowd to plant trees.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+						ctx.fillText("  A great environmental education for all ages", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+						ctx.fillText(" and I have already planted Aroeira Santa and Ipê Branco.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
 
 						
 					}
@@ -610,7 +611,7 @@
 						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
 						ctx.font = "20px Arial"
 						ctx.fillStyle = "black";
-						ctx.fillText("- Que lugar lindo!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+						ctx.fillText("- What a beautiful place!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
 
 						
 					}
@@ -619,13 +620,19 @@
 					
 			}
 
+			else if (estadoAtual == estados.acabou){
+				intro.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+			}
+
+
+
 		}
 
 		//inicializa o jogo
 		main();
 	</script>
 	<img id="prota" src="Jose.gif">
-	<a id = "credito1" href="https://www.freepik.com">Feito por Freepik</a>
-	<a id = "credito2" href="https://www.freepik.com">Feito por Freepik</a>
+	<a id = "credito1" href="https://www.freepik.com">Designed by Freepik</a>
+	<a id = "credito2" href="https://www.freepik.com">Designed by Freepik</a>
 </body>
 </html>

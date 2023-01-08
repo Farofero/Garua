@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.55">
+	<title> Teste 123 </title>
+	<script src = "SpriteMenu.js"></script>
+	<style>
+
+        img{
+            position: relative;
+            top: 0px; /* 768px é o 100% do tamanho da janela*/
+        }
+        div#jogar{
+                position: absolute; /* diz a posição do div*/
+                top: 340px; /* 768px é o 100% do tamanho da janela*/
+                left: 210px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                color: white; /* cor da letra */
+                background: blue; /* cor do fundo */
+                width: 260px; /* largura do div */
+                height: 100px; /* altura do div*/
+                opacity: 0;
+
+            }
+            div#opcoes{
+                position: absolute; /* diz a posição do div*/
+                top: 475px; /* 768px é o 100% do tamanho da janela*/
+                left: 210px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                color: white; /* cor da letra */
+                background: red; /* cor do fundo */
+                width: 260px; /* largura do div */
+                height: 100px; /* altura do div*/
+                opacity: 0;
+            }
+		
+
+	</style>
+</head>
+<body>
+    <img id = "menu" src="Sprite-menu.png" >
+	
+	<div id = "jogar"></div>
+    <div id = "opcoes"></div>
+
+    <script type="text/javascript">
+       
+       var a = window.document.getElementById("jogar"); // transformou a area em uma variável chamada "a" (uma classe)
+       var b = window.document.getElementById("opcoes");
+
+            b.addEventListener('click', clicar2); //listener escuta o click do mouse e chama a função "clicar"
+            a.addEventListener('click', clicar); //listener escuta o click do mouse e chama a função "clicar"
+
+            function clicar(){ // executa quando clica o mouse. dentro dos parentes, coloca-se parâmetros/informações
+               window.location.href = "Idioma.html";
+            }
+             function clicar2(){ // executa quando clica o mouse. dentro dos parentes, coloca-se parâmetros/informações
+               window.location.href = "Idioma2.html";
+            }
+            
+    </script>
+</body>
+</html>

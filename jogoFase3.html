@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.7">
+	<title> Teste 123 </title>
+	<script src = "Sprite.js"></script>
+	<style>
+		/* canvas é a área onde todos os elementos do jogo serão colocados*/
+		canvas {
+			position: absolute;
+			top: 0px;
+			botton: 0pc;
+			left: 0px;
+			right: 0px;
+			margin: auto;
+			color:  skyblue;
+				}
+				img#prota{
+				position: absolute; /* diz a posição do div*/
+                top: 450px; /* 768px é o 100% do tamanho da janela*/
+                left: 425px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                opacity: 1;
+				}
+				a#credito1{
+					position: absolute; /* diz a posição do div*/
+                top: 300px; /* 768px é o 100% do tamanho da janela*/
+                left: 400px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                opacity: 0;
+                
+				}
+				a#credito2{
+					position: absolute; /* diz a posição do div*/
+                top: 175px; /* 768px é o 100% do tamanho da janela*/
+                left: 600px; /* 1720px é o 100% do tamanho da janela*/
+                right: 0px;
+                opacity: 0;
+				}
+
+	</style>
+</head>
+<body>
+	<script>
+		//variaveis do jogo
+		var canvas, ctx, ALTURA, LARGURA, maxPulos = 1, velocidade = 10, // velocidade = velocidade principal, ALTURA e LARGURA = tamanho do canvas, maxPulos = quantidade de pulos que o personagens poe fazer
+		estadoAtual, img, contador = 0,
+
+		// Sprites que se movimentam atras do personagem
+		fundo_quadra = {
+			y: 320, // localização no eixo y
+			x: 50, // localização no eixo x
+			altura: 116, // altura do sprite
+			velocidade: 0, // velocidade que fará ao se deslocar
+	
+			//função busca o sprite correto e desenha nas conrdenadas já mencionadas
+			desenha:function(){
+				sprQuadra.desenha(this.x, this.y);// sprite do fundo do jogo
+				sprQuadra.desenha(this.x, this.y);
+			}
+		}
+		fundo_bancos = {
+			y: 438, // localização no eixo y
+			x: 0, // localização no eixo x
+			altura: 116, // altura do sprite
+			velocidade: 1.7, // velocidade que fará ao se deslocar
+	
+			// função atualiza o fundo
+			atualiza: function(){
+				this.x -= this.velocidade; // utiliza o x mencionado e desloca o sprite usando a velocidade nesse eixo
+				if (this.x <= -696) // Se a posição do x for menor ou igual que -500, o x volta para a posição inicial
+					this.x = 0;
+			},
+			//função busca o sprite correto e desenha nas conrdenadas já mencionadas
+			desenha:function(){
+				sprBancos.desenha(this.x, this.y);// sprite do fundo do jogo
+				sprBancos.desenha(this.x, this.y);
+			}
+		}
+		fundo = {
+			y: 480, // localização no eixo y
+			x: 0, // localização no eixo x
+			altura: 116, // altura do sprite
+			velocidade: 2, // velocidade que fará ao se deslocar
+	
+			// função atualiza o fundo
+			atualiza: function(){
+				this.x -= this.velocidade; // utiliza o x mencionado e desloca o sprite usando a velocidade nesse eixo
+				if (this.x <= -500) // Se a posição do x for menor ou igual que -500, o x volta para a posição inicial
+					this.x = 0;
+			},
+			//função busca o sprite correto e desenha nas conrdenadas já mencionadas
+			desenha:function(){
+				bg2.desenha(this.x, this.y);// sprite do fundo do jogo
+				bg2.desenha(this.x, this.y);
+			}
+		}
+		 fundo_Arvore = {
+			y: 335, // localização no eixo y
+			x: 0, // localização no eixo x
+			altura: 116, // altura do sprite
+			velocidade: 1.4, // velocidade que fará ao se deslocar
+	
+			// função atualiza o fundo
+			atualiza: function(){
+				this.x -= this.velocidade; // utiliza o x mencionado e desloca o sprite usando a velocidade nesse eixo
+				if (this.x <= -515) // Se a posição do x for menor ou igual que -500, o x volta para a posição inicial
+					this.x = 0;
+			},
+			//função busca o sprite correto e desenha nas conrdenadas já mencionadas
+			desenha:function(){
+				sprArvorinhas.desenha(this.x, this.y);// sprite do fundo do jogo
+				sprArvorinhas.desenha(this.x, this.y);
+			}
+		}
+		//variável que dirá o estado do jogo
+		estados = {
+			jogar:0, // estado onde o o jogo ainda vai começar, ou seja, está no menu (é igual a 0)
+			jogando:1, // estado onde o usuário está jogando (é igual a 1)
+			perdeu:2, // estado onde o jogo continua e muda de fase (é igual a 3)
+			acabou:3, // estado onde o jogador perdeu o jogo
+		}
+		//variável que dirá os atributos do sprite que simula o chão
+		chao = {
+			y: 550, //posição y é igual a 550 no canvas
+			x: 0, // posição x é igual a 0 no canvas
+			altura: 50, // altura do sprite é igual a 50
+			velocidade: 10, // velocidade própria do chão
+
+			// função atualiza o movimento do chão
+			atualiza: function(){
+				this.x -= this.velocidade; // o x mencionado vai diminuir de acordo com a velocidade principal
+				if (this.x <= -695) // Se o x mencionado for menor ou igual a -550, o x volta à posição inicial
+					this.x = 0;
+
+			},
+			//função que desenha o sprite do chão na posição x e y mencionadas
+			desenha: function(){
+				spriteChao.desenha(this.x, this.y);
+				spriteChao.desenha(this.x + spriteChao.largura, this.y); // ajusta o eixo x com a largura do sprite
+			}
+		},
+		//variável que dirá o estado do jogo
+		estados = {
+			jogar:0, // estado onde o o jogo ainda vai começar, ou seja, está no menu (é igual a 0)
+			jogando:1, // estado onde o usuário está jogando (é igual a 1)
+			perdeu:2, // estado onde o jogo continua e muda de fase (é igual a 3)
+			acabou:3, // estado onde o jogador perdeu o jogo
+		}
+		//variável que dirá os atributos do sprite que simula o chão
+		chao = {
+			y: 550, //posição y é igual a 550 no canvas
+			x: 0, // posição x é igual a 0 no canvas
+			altura: 50, // altura do sprite é igual a 50
+			velocidade: 10, // velocidade própria do chão
+
+			// função atualiza o movimento do chão
+			atualiza: function(){
+				this.x -= this.velocidade; // o x mencionado vai diminuir de acordo com a velocidade principal
+				if (this.x <= -550) // Se o x mencionado for menor ou igual a -550, o x volta à posição inicial
+					this.x = 0;
+
+			},
+			//função que desenha o sprite do chão na posição x e y mencionadas
+			desenha: function(){
+				spriteChao.desenha(this.x, this.y);
+				spriteChao.desenha(this.x + spriteChao.largura, this.y); // ajusta o eixo x com a largura do sprite
+			}
+		},
+		//É a variável que define o personagem
+		bloco = {
+
+			x: 50, // posição x do personagem
+			y: 550, // posição y do personagem
+			altura: spriteBoneco.altura, // a altura é o sprite do personagem
+			largura: spriteBoneco.largura - 40, // a largura é o sprite do personagem
+			gravidade: 1.2, // velocidade em que ele desce após pular
+			velocidade: 0, // velocidade do personagem no jogo
+			forcaDoPulo: 18, // altura que o personagem pode pular
+			qntPulos: 0, // quantidade de pulos que pode fazer antes de voltar para o chão
+			score: 0, // contador de obst´=aculos já ultrapassados
+			r:0, // acho que é uma variável sobrevivente (seu amigo companheiro :) )
+			vida: 3, // vida do personagem
+
+			//função que atualiza o personagem
+			atualiza: function(){
+
+				this.velocidade += this.gravidade; // padronização da relação da velocidade com a gravidade do personagem
+				this.y += this.velocidade; // padronização da relação da posição y com a velocidade do personagem
+
+
+				if (this.y > chao.y - this.altura){ // se a psição y for maior que a altura do chão menos a altura máxima do personagem
+					this.y = chao.y - this.altura; // volta a posição y igual ao chão menos altura 
+					this.qntPulos = 0; // reseta as posibilidades que o personagem pode fazer quando encosta no chão
+					this.velocidade = 0; // reseta a velocidade
+				}
+			},
+			// função de pular
+			pula: function(){
+				if (this.qntPulos < maxPulos){ // se a quantidade de pulos for meonor que o máximo que pode fazer
+					this.velocidade = -this.forcaDoPulo; // calculo do pulo
+					this.qntPulos++; // a quantidade é contada
+				}
+			},
+			// função toma dano. Quando o personagem encosta no obstáculo ele acusa mudando a cor do personagem em laranja e depois volta para a "cor padrão"
+			dano: function(){
+				bloco.cor = "orange";
+				setTimeout( function(){
+					bloco.cor = "red";
+				}, 500);
+			},
+			// função desenha o sprite do personagem
+			desenha: function(){
+				//spriteBoneco.desenha(this.x, this.y);
+				if(this.y < 549 - this.altura){
+					spriteBoneco.desenha(this.x, this.y);
+					document.getElementById("prota").style.opacity = 0
+				}
+				else if(this.y < chao.y - this.altura){
+					document.getElementById("prota").style.opacity = 1
+				}
+				else if (this.x == 200){
+					spriteBonecoPula.desenha(50, 450);
+					document.getElementById("prota").style.opacity = 0
+				}
+				}
+		},
+		// variável que dita os atributos dos obstáculos
+		obstaculos = {
+			_obs: [],
+			cores: ["#ffbc1c", "#ff1c1c", "#ff85e1", "#52a7ff", "#78ff5d"],
+			tempoInsere: 0,
+
+			insere: function(){
+				this._obs.push({
+				x: LARGURA,
+				y: ALTURA,
+				largura: 50,
+				altura: 60 + Math.floor(35 * Math.random()),
+				cor: this.cores[Math.floor(5 * Math.random())]
+				});
+
+				this.tempoInsere = 30 + Math.floor(40 * Math.random());
+			},
+			atualiza: function(){
+				if (this.tempoInsere == 0)
+					this.insere();
+				else
+					this.tempoInsere--;
+
+				for (var i = 0, tam = this._obs.length; i < tam; i++){
+					var obs = this._obs[i];
+
+					obs.x -= velocidade;
+
+					if (bloco.x < obs.x + obs.largura && bloco.x + bloco.largura >= obs.x && bloco.y + bloco.altura >= chao.y - obs.altura)
+						bloco.dano();
+
+					else if (obs.x == 0 && bloco.cor != "orange")
+						bloco.score++;
+
+					else if (obs.x <= - obs.largura){
+						this._obs.splice(i, 1);
+						tam--;
+						i--;
+					}
+				}
+
+				if (20 > bloco.score >= 10){
+					velocidade = 11
+				}
+
+				else if (30 > bloco.score >= 20){
+					velocidade = 12
+				}
+
+				else if (40 > bloco.score >= 30){
+					velocidade = 13
+				}
+
+				else if (bloco.score >= 4){
+					velocidade = 0
+					estadoAtual = estados.perdeu
+					fundo.velocidade = 0;
+					velocidade = 0;
+					chao.x = 0;
+					chao.velocidade = 0;
+					contador++
+					obstaculos.x = LARGURA;
+					obstaculos.y = ALTURA;
+
+					if (contador == 1){
+						//window.location.href = "jogoFase2.html"
+						//window.location.href = "https://dicasdejavascript.com.br/como-redirecionar-a-pagina-com-javascript/"
+						intro.desenha(LARGURA / 2 - perdeu.largura / 2 - 130, ALTURA / 2 - perdeu.altura / 2 - 125);
+						ctx.font = "40px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("Créditos", LARGURA / 2 - jogar.largura / 2 + 130, ALTURA / 2 - jogar.altura / 2 - 60);
+						ctx.font = "30px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("Desenvolvedores:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 - 10);
+						ctx.font = "20px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("Arthur Cavalcante, Arthur Saboia, Eros Kauan, Gabriel da Silva,", LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 15); 
+						ctx.fillText("Gilberto De Almeida, Victhor Gabriel, Wagner Oliveira.", LARGURA / 2 - jogar.largura / 2 -90, ALTURA / 2 - jogar.altura / 2 + 40);
+						 ctx.fillText("Instagram da equipe:", LARGURA / 2 - jogar.largura / 2 -90, ALTURA / 2 - jogar.altura / 2 + 75);
+						 //document.getElementById("credito1").href = "https://www.freepik.com"
+
+						ctx.font = "25px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("Crédito especial ao autor das seguintes artes:", LARGURA / 2 - jogar.largura / 2 - 100, ALTURA / 2 - jogar.altura / 2 + 115);
+
+						document.getElementById("credito1").style.opacity = 1
+						document.getElementById("credito2").style.opacity = 1
+
+						dialogo1.desenha(200, 275);
+						dialogo2.desenha(300, 275)
+
+
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore2.velocidade = 1.4;
+						fundo_bancos2.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+					}
+		
+
+				}
+			},
+
+			limpa: function(){
+				this._obs = [];
+			},
+
+			desenha: function(){
+				for (var i = 0, tam = this._obs.length; i < tam; i++){
+					var obs = this._obs[i];
+				
+					if (bloco.score < 5 || 54 < bloco.score && bloco.score < 60){
+						obstaculo13.desenha(obs.x, chao.y - obs.altura);
+					}
+
+					else if (bloco.score > 4 && bloco.score < 10) {
+						obstaculo1.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (bloco.score > 9 && bloco.score < 12){
+						obstaculo12.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (11 < bloco.score && bloco.score < 15){
+						obstaculo7.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (14 < bloco.score && bloco.score < 20){
+						obstaculo2.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (19 < bloco.score && bloco.score < 25){
+						obstaculo3.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (24 < bloco.score && bloco.score < 30){
+						obstaculo4.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (29 < bloco.score && bloco.score < 35){
+						obstaculo5.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (34 < bloco.score && bloco.score < 40){
+						obstaculo8.desenha(obs.x, chao.y - obs.altura);
+					}
+					else if (39 < bloco.score && bloco.score < 45){
+						obstaculo9.desenha(obs.x, chao.y - obs.altura);
+					};
+				}
+			}
+		};
+
+		//função do clique do mouse
+	function clique(event) {
+			document.onkeydown = function(e) {
+            switch (e.keyCode) {
+                case 13:
+                	if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+					else if (contador == 1) {
+						window.location.href = "index.html"
+					}
+					else if (estadoAtual == estados.jogando){
+						bloco.score++
+					 }
+					else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+						document.getElementById("prota").style.opacity = 100
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+						document.getElementById("prota").style.opacity = 100
+					}
+			break;
+					
+				}
+			}
+
+			}
+			function clique2(event){
+				if (estadoAtual == estados.jogar) { // quando ainda vai jogar, o clique começa o jogo
+						estadoAtual = estados.jogando;
+					}
+					else if (contador == 1) {
+						window.location.href = "index.html"
+					}
+					else if (estadoAtual == estados.jogando){
+						bloco.score++
+					 }
+					else if (estadoAtual == estados.acabou){ // quando passa de fase, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+						document.getElementById("prota").style.opacity = 100
+	
+					}
+					else if (estadoAtual == estados.perdeu){// / quando perder, o clique reinicia o jogo
+						estadoAtual = estados.jogar;
+						obstaculos.limpa();
+						bloco.y = 550;
+						bloco.score = 0;
+						fundo.velocidade = 2;
+						fundo_Arvore.velocidade = 1.4;
+						fundo_bancos.velocidade = 1.7;
+						chao.velocidade = 10;
+						bloco.vida = 3;
+						bloco.x = 50;
+						xis = 600;
+						bloco.r = 0;
+						document.getElementById("prota").style.opacity = 100
+					}
+			}
+		//função que monta o corpo do jogo (onde vão ficar as coisas)
+		function main() {
+			//tamanho do canvas
+			ALTURA = window.innerHeight;
+			LARGURA = window.innerWidth;
+
+			if (LARGURA >= 500){
+				LARGURA = 600;
+				ALTURA = 600;
+			}
+			//propiedades do canvas
+			canvas = document.createElement("canvas");
+			canvas.width = LARGURA;
+			canvas.height = ALTURA;
+			canvas.style.border = "1px solid #000";
+
+			ctx = canvas.getContext("2d");
+			document.body.appendChild(canvas);
+			document.addEventListener("keydown", clique);
+			document.addEventListener("mousedown", clique2);
+			estadoAtual = estados.jogar;
+
+			img = new Image();
+			img.src = "Sprite_cartaPA.png";
+
+
+
+			roda();
+
+		}
+		//função de inicia as funções atualiza e desenha
+		function roda() {
+			atualiza();
+			desenha();
+
+			window.requestAnimationFrame(roda);
+		}
+		//função que que determinará quando as coisas vão acontecer e acabar
+		function atualiza() {
+
+			if (estadoAtual == estados.jogando)
+				obstaculos.atualiza();
+
+			fundo_Arvore.atualiza();
+			fundo.atualiza();
+			fundo_bancos.atualiza();
+			chao.atualiza();
+			bloco.atualiza();
+			velocidade = 10;
+
+
+		}
+		// função que denha o fundo do jogo, chão e personagem
+		function desenha() {
+			bg.desenha(0, 0);
+			bg.desenha(0 + LARGURA, 0);
+
+
+			//ctx.fillStyle = "#fff";
+			//ctx.font = "50px Arial";
+			//ctx.fillText(bloco.score, 30, 68);
+
+			//ctx.fillStyle = "red";
+			//ctx.font = "50px Arial";
+			//ctx.fillText(bloco.vida, 520, 68);
+
+			obstaculos.desenha();
+			fundo_quadra.desenha();
+			fundo_Arvore.desenha();
+			fundo_bancos.desenha();
+			fundo.desenha();
+			chao.desenha();
+			bloco.desenha();
+
+			// desenha um "botão" para jogar
+			if(estadoAtual == estados.jogar){
+				fim.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+				ctx.font = "20px Arial"
+				ctx.fillStyle = "black";
+				ctx.fillText("Enter para começar", LARGURA / 2 - jogar.largura / 2 + 30, ALTURA / 2 - jogar.altura / 2 + 340);
+			}
+			//desenha um "botão" para reiniciar o jogo
+			else if (estadoAtual == estados.perdeu) {
+
+				//perdeu.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2);
+			}
+			//desenha os obstáculos quando estiver jogando
+			else if (estadoAtual == estados.jogando){
+				obstaculos.desenha();
+					if (bloco.score >= 3){
+					ctx.fillStyle = "black"
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
+					ctx.fillStyle = "white"
+					ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
+					ctx.font = "20px Arial"
+					ctx.fillStyle = "black";
+					ctx.fillText("- Conseguirmos diminuir bastante a sujeira e a administração", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+					ctx.fillText(" acionou o governo, que consertou os postes e a paisagem", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+					ctx.fillText(" da praça!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80)
+
+					
+					}
+					else if (bloco.score >= 2){
+						ctx.fillStyle = "black"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
+						ctx.fillStyle = "white"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
+						ctx.font = "20px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("- Além disso, agora ela é uma boa opção para quem", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+						ctx.fillText(" quer fazer uma caminhada mais agradável, sozinho ou com", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+						ctx.fillText(" a família.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+
+						
+					}
+					else if (bloco.score >= 1){
+						ctx.fillStyle = "black"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
+						ctx.fillStyle = "white"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
+						ctx.font = "20px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("- Agora que melhoramos essa praça, muitas atividades diver-", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+						ctx.fillText(" tidas estão aparecendo para a comunidade! Como o grupo", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 55);
+						ctx.fillText(" Tempo de plantar, que está fazendo um multirão para plantar", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 80);
+						ctx.fillText(" árvores. Uma ótima educação ambiental para todas as", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 105);
+						ctx.fillText(" idades e já plantei Aroeira Santa e Ipê Branco.", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 130);
+
+						
+					}
+
+					else if (bloco.score >= 0){
+						ctx.fillStyle = "black"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 95, ALTURA / 2 - jogar.altura / 2 + 1, 560, 160);
+						ctx.fillStyle = "white"
+						ctx.fillRect(LARGURA / 2 - jogar.largura / 2 - 90, ALTURA / 2 - jogar.altura / 2 + 5, 550, 150);
+						ctx.font = "20px Arial"
+						ctx.fillStyle = "black";
+						ctx.fillText("- Que lugar lindo!", LARGURA / 2 - jogar.largura / 2 - 88, ALTURA / 2 - jogar.altura / 2 + 30);
+
+						
+					}
+					
+					
+					
+			}
+
+		}
+
+		//inicializa o jogo
+		main();
+	</script>
+	<img id="prota" src="Jose.gif">
+	<a id = "credito1" href="https://www.freepik.com">Feito por Freepik</a>
+	<a id = "credito2" href="https://www.freepik.com">Feito por Freepik</a>
+</body>
+</html>

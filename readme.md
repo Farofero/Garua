@@ -143,20 +143,6 @@ O desenvolvimento seguiu três frentes:
 - Ao orientador, **professor Enoque**
 - Ao projeto **Lixo Zero** do IFB, por uma possível parceria
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=arthurcavalcante&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&locale=pt-br"/>
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=arthurcavalcante&layout=compact&langs_count=8&theme=tokyonight&hide_border=true"/>
-
-<br>
-
-<img src="https://streak-stats.demolab.com?user=arthurcavalcante&theme=tokyonight&hide_border=true&locale=pt_BR" />
-
-</div>
-
 ## 🤝 Contato
 
 <div align="center">

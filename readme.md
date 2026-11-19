@@ -53,6 +53,8 @@ Durante a história, o jogador aprende a **reciclar corretamente** e a **manter 
 |:---:|:---:|:---:|:---:|
 | ![Fase 1](assets/fase1.png) | ![Fase 2](assets/fase2.png) | ![Fase 3](assets/fase3.png) | ![Mascote](assets/mascote.png) |
 
+( Em breve! )
+
 </div>
 
 > 📌 Adicione as imagens na pasta `assets/` com os nomes acima.
@@ -87,7 +89,7 @@ cd garua
 # (ou use a extensão Live Server do VS Code)
 ```
 
-## 📁 Estrutura sugerida
+## 📁 Estrutura sugerida ( Em breve! )
 
 ```
 garua/
@@ -97,6 +99,8 @@ garua/
 ├── index.html       # Página principal
 └── README.md
 ```
+
+
 
 ## 🔬 Metodologia
 
